@@ -9,7 +9,7 @@ namespace GeometricLibrary.UnitTest
         public void Square_data()
         {
             // Arrange
-            var circle = new Circle("Круг", 13.3);
+            var circle = new Circle("РљСЂСѓРі", 13.3);
             double expected = 555;
 
             // Act
