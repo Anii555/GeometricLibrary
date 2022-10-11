@@ -5,8 +5,11 @@ namespace GeometricLibrary.UnitTest
     [TestClass]
     public class CircleTest
     {
+        /// <summary>
+        /// Тест стандартного круга
+        /// </summary>
         [TestMethod]
-        public void Square_data()
+        public void Circle_data()
         {
             // Arrange
             var circle = new Circle("Круг", 13.3);
@@ -17,6 +20,17 @@ namespace GeometricLibrary.UnitTest
 
             // Assert
             Assert.AreEqual(expected, result);
+        }
+
+        /// <summary>
+        /// Тест круга с нулевым радиусом
+        /// </summary>
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException),
+    "Радиус должен быть положительным.")]
+        public void isExistWithNullRadius()
+        {
+            var circle = new Circle("Круг", 0);
         }
     }
 }
