@@ -1,21 +1,24 @@
 namespace GeometricLibrary
 {
-    public abstract class Shape
+    /// <summary>
+    /// Интерфейс взаимодействия с любымой фигурой
+    /// </summary>
+    public class Shape
     {
         /// <summary>
-        /// Тип фигуры
+        /// Получение площади круга
         /// </summary>
-        public string TypeName { get; set; }
-
-        public Shape(string typeName)
+        public double GetCircleSquare(double radius)
         {
-            TypeName = typeName;
+            return new Circle(radius).Square();
         }
 
         /// <summary>
-        /// Вычисление площади фигуры
+        /// Получение площади треугольника
         /// </summary>
-        public abstract double Square();
-
+        public double GetTriangleSquare(double side1, double side2, double side3)
+        {
+            return new Triangle(side1, side2, side3).Square();
+        }
     }
 }

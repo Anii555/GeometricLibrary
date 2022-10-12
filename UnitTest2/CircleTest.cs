@@ -12,7 +12,7 @@ namespace GeometricLibrary.UnitTest
         public void Circle_data()
         {
             // Arrange
-            var circle = new Circle("Круг", 13.3);
+            var circle = new Circle(13.3);
             double expected = 555;
 
             // Act
@@ -30,7 +30,7 @@ namespace GeometricLibrary.UnitTest
     "Радиус должен быть положительным.")]
         public void isExistWithNullRadius()
         {
-            var circle = new Circle("Круг", 0);
+            var circle = new Circle(0);
         }
     }
 }
