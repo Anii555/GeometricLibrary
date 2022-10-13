@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace GeometricLibrary
 {
-    public class Circle : Shape
+    public class Circle : IShape
     {
         /// <summary>
         /// Радиус
         /// </summary>
         public double Radius { get; set; }
 
-        public Circle(string typeName, double radius) : base(typeName)
+        public Circle(double radius)
         {
             if (radius <= 0)
             {
@@ -26,7 +26,7 @@ namespace GeometricLibrary
         /// <summary>
         /// Вычисление площади круга
         /// </summary>        
-        public override double Square()
+        public double Square()
         {
             return Math.Round(3.14f * Math.Pow(Radius, 2), 1);
         }

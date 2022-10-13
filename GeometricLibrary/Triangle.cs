@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GeometricLibrary
 {
-    public class Triangle : Shape
+    public class Triangle : IShape
     {
         /// <summary>
         /// Сторона треугольника - A
@@ -23,7 +23,7 @@ namespace GeometricLibrary
         /// </summary>
         public double Side3 { get; set; }
 
-        public Triangle(string typeName, double side1, double side2, double side3) : base(typeName)
+        public Triangle(double side1, double side2, double side3)
         {
             // Проверка треугольника на соответствие
             // базовым требованиям геометрии.
@@ -49,7 +49,7 @@ namespace GeometricLibrary
         /// <summary>
         /// Вычисление площади треугольника
         /// </summary>
-        public override double Square()
+        public double Square()
         {
             // вычисление периметра
             var perimeter = (Side1 + Side2 + Side3) / 2;
@@ -62,7 +62,7 @@ namespace GeometricLibrary
         /// <summary>
         /// Проверка на то, является ли треугольник прямоугольным
         /// </summary>
-        public bool isStraightTriangle()
+        public bool IsStraightTriangle()
         {
             bool isStraight = (Side1 == Math.Sqrt(Math.Pow(Side2, 2) + Math.Pow(Side2, 2))
                     || Side2 == Math.Sqrt(Math.Pow(Side1, 2) + Math.Pow(Side3, 2))
