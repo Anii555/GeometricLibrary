@@ -5,11 +5,12 @@ namespace GeometricLibrary.UnitTest
     [TestClass]
     public class TriangleTest
     {
+
         /// <summary>
-        /// Тест обычного треугольника со сторонамм 3,4,5
+        /// Тест на вычисление площади
         /// </summary>
         [TestMethod]
-        public void Triangle_data()
+        public void TriangleSquare()
         {
             // Arrange
             var triangle = new Triangle(3, 4, 5);
@@ -23,31 +24,34 @@ namespace GeometricLibrary.UnitTest
         }
 
         /// <summary>
-        /// Тест треугольника на прямоугольность (2,3,4)
+        /// Тест треугольника на прямоугольность
         /// </summary>
         [TestMethod]
-        public void isStraightTriangle_data()
+        public void IsStraightTriangle()
         {
-            // Arrange
+            // Arrage
             var triangle333 = new Triangle(3, 3, 3);
-            var triangle345 = new Triangle(3, 4, 5);
 
-            Assert.IsTrue(isStraightTriangle(triangle345));
-            Assert.IsFalse(isStraightTriangle(triangle333));
+            // Act
+            var triangleCheck = triangle333.IsStraightTriangle();
+            var localCheck = LocalStraightCheck(triangle333);
+
+            // Assert
+            Assert.AreEqual(triangleCheck, localCheck);
         }
 
         /// <summary>
-        /// Проверка на то, является ли треугольник прямоугольным
+        /// Локальная проверка на то, является ли треугольник прямоугольным.
+        /// Метод учитывает возможность изменения тестир-го метода другими разработчиками.
         /// </summary>
-        public bool isStraightTriangle(Triangle triangle)
+        public bool LocalStraightCheck(Triangle triangle333)
         {
-            bool isStraight = (triangle.Side1 == Math.Sqrt(Math.Pow(triangle.Side2, 2) + Math.Pow(triangle.Side2, 2))
-                    || triangle.Side2 == Math.Sqrt(Math.Pow(triangle.Side1, 2) + Math.Pow(triangle.Side3, 2))
-                    || triangle.Side3 == Math.Sqrt(Math.Pow(triangle.Side1, 2) + Math.Pow(triangle.Side2, 2)));
+            bool isStraight = (triangle333.Side1 == Math.Sqrt(Math.Pow(triangle333.Side2, 2) + Math.Pow(triangle333.Side2, 2))
+                    || triangle333.Side2 == Math.Sqrt(Math.Pow(triangle333.Side1, 2) + Math.Pow(triangle333.Side3, 2))
+                    || triangle333.Side3 == Math.Sqrt(Math.Pow(triangle333.Side1, 2) + Math.Pow(triangle333.Side2, 2)));
 
             return isStraight;
         }
-
 
         /// <summary>
         /// Тест треугольника со стороной - большей суммы двух других (1,2,7)
@@ -55,7 +59,7 @@ namespace GeometricLibrary.UnitTest
         [TestMethod]
         [ExpectedException(typeof(ArgumentException),
     "Сторона треугольника не может быть больше суммы двух других. Введите другие значения для расчётов.")]
-        public void isExist()
+        public void IncorrectSides()
         {
             var triangle = new Triangle(1, 2, 7);
         }
@@ -66,7 +70,7 @@ namespace GeometricLibrary.UnitTest
         [TestMethod]
         [ExpectedException(typeof(ArgumentException),
     "Сторона(ы) треугольника не могут быть меньше 0.Введите другие значения для расчётов.")]
-        public void isExistWithNullSides()
+        public void NotPositiveSides()
         {
             var triangle = new Triangle(0, 1, 1);
         }

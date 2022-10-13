@@ -59,5 +59,16 @@ namespace GeometricLibrary
             return square;
         }
 
+        /// <summary>
+        /// Проверка на то, является ли треугольник прямоугольным
+        /// </summary>
+        public bool IsStraightTriangle()
+        {
+            bool isStraight = (Side1 == Math.Sqrt(Math.Pow(Side2, 2) + Math.Pow(Side2, 2))
+                    || Side2 == Math.Sqrt(Math.Pow(Side1, 2) + Math.Pow(Side3, 2))
+                    || Side3 == Math.Sqrt(Math.Pow(Side1, 2) + Math.Pow(Side2, 2)));
+
+            return isStraight;
+        }
     }
 }

@@ -28,7 +28,7 @@ namespace GeometricLibrary.UnitTest
         [TestMethod]
         [ExpectedException(typeof(ArgumentException),
     "Радиус должен быть положительным.")]
-        public void isExistWithNullRadius()
+        public void isExistWithIncorrectRadius()
         {
             var circle = new Circle(0);
         }
